@@ -1,0 +1,21 @@
+  on:
+    push:
+      branches: [main]
+    pull_request:
+  name: CI
+  jobs:
+    flatpak:
+      name: "Flatpak"
+      runs-on: ubuntu-latest
+      container:
+        image: bilelmoussaoui/flatpak-github-actions:gnome-42
+        options: --privileged
+      steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+        with:
+          bundle: cinny.flatpak
+          manifest-path: org.hbarsaiyan.cinnytauri-node.yml
+          cache-key: flatpak-builder-${{ github.sha }}
