@@ -1,0 +1,28 @@
+From 66bedd5057f3e0443090be4a1ddba1cd5e1634a1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?F=C3=A1bio=20Rodrigues=20Ribeiro?= <farribeiro@gmail.com>
+Date: Thu, 9 Jun 2022 18:06:18 -0300
+Subject: [PATCH] Update tauri.conf.json
+
+---
+ src-tauri/tauri.conf.json | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 9b09e19..58d4933 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -31,13 +31,11 @@
+       "shortDescription": "Yet another matrix client",
+       "longDescription": "Cinny is built on top of Matrix — An open network for secure, decentralized communication.",
+       "deb": {
+-        "depends": [],
+-        "useBootstrapper": false
++        "depends": []
+       },
+       "macOS": {
+         "frameworks": [],
+         "minimumSystemVersion": "",
+-        "useBootstrapper": false,
+         "exceptionDomain": "",
+         "signingIdentity": null,
+         "entitlements": null

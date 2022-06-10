@@ -1,0 +1,22 @@
+From 1b614df33db1d4d64310e8a4697b07af4a916d3e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?F=C3=A1bio=20Rodrigues=20Ribeiro?= <farribeiro@gmail.com>
+Date: Fri, 10 Jun 2022 11:57:38 -0300
+Subject: [PATCH] Update tauri.conf.json
+
+---
+ src-tauri/tauri.conf.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 9b09e19..569063e 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -14,7 +14,7 @@
+       "iconPath": "icons/tray.png"
+     },
+     "bundle": {
+-      "active": true,
++      "active": false,
+       "targets": "all",
+       "identifier": "cinny.tauri",
+       "icon": [

@@ -1,0 +1,71 @@
+id: org.hbarsaiyan.cinnytauri
+runtime: org.gnome.Platform
+runtime-version: '42'
+sdk: org.gnome.Sdk
+command: cinny.sh
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-nightly
+  - org.freedesktop.Sdk.Extension.node16
+
+modules:
+  - shared-modules/libappindicator/libappindicator-gtk3-12.10.json
+
+  - name: cinnytauri
+    build-options:
+      append-path: /usr/lib/sdk/node16/bin:/usr/lib/sdk/rust-nightly/bin
+      build-args:
+        - --share=network
+      env: 
+        - CARGO_HOME: "/run/build/rust-flatpak/cargo"
+    buildsystem: simple
+    build-commands:
+      - npm install
+      - npm run tauri build
+      - cp -r * /app
+      - mkdir -p /app/bin
+      - install -D cinny.sh /app/bin/cinny.sh
+    sources:
+      - url: https://github.com/hbarsaiyan/cinny-tauri/archive/refs/tags/v1.1.2.tar.gz
+        sha256: ed3686b238002ae8983078ce24af11fc8f62362edb5d9fa965c6fb610c4dff92
+        type: archive
+      - path: 1.patch
+        type: patch
+      - path: 2.patch
+        type: patch
+      - path: 3.patch
+        type: patch
+      - type: script
+        dest-filename: cinny.sh
+        commands:
+          - echo "Hello world"
+
+finish-args:
+  # Required due to being a GUI application
+  - --socket=x11
+  # Required to make sure x11 performance is achived on all platforms
+  # At least that's what the legends tell. it might be worth experimenting
+  # with dropping this permission.
+  - --share=ipc
+  # Required for experimental wayland support
+  - --socket=wayland
+  # Required to provide Call functionality
+  - --socket=pulseaudio
+  - --device=all
+  # As a chat application, networking is required
+  - --share=network
+  # Allows to send and receive files in the Downloads directory
+  # Required until Electron supports portals for load and safe dialogs
+  - --filesystem=xdg-download
+  # Required for notifications in various desktop environments
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  # Required to allow screensaver/idle inhibition such as during video calls
+  - --talk-name=org.freedesktop.ScreenSaver
+  # Required due to KDE's special way of handling notifications
+  - --own-name=org.kde.StatusNotifierItem-2-1
+  # Required for advanced input methods e.g. writing CJK languages
+  - --talk-name=org.freedesktop.portal.Fcitx
+  # Required to store access tokens (persistent logins)
+  - --filesystem=xdg-run/keyring
+  # Required for experimental wayland support
+  - --filesystem=xdg-run/pipewire-0
