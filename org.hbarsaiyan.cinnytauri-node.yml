@@ -27,12 +27,12 @@ modules:
       - rm -f cinny_*.deb
       - tar xf data.tar.gz
       - rm -f control.tar.gz data.tar.xz debian-binary
-      - install -Dm644 in.cinny.Cinny.appdata.xml /app/share/metainfo/in.cinny.Cinny.metainfo.xml
+      - install -Dm644 in.cinny.Cinny.appdata.xml /app/share/metainfo/org.hbarsaiyan.cinnytauri.metainfo.xml
       - cp -r usr/bin/cinny /app/bin
       - mkdir -p /app/share/icons/hicolor
       - cp -r usr/share/icons/hicolor/* /app/share/icons/hicolor
       - rm -rf /app/share/icons/hicolor/512x512@2x
-      - install -Dm744 usr/share/applications/cinny.desktop /app/share/applications/in.cinny.Cinny.desktop
+      - install -Dm744 usr/share/applications/cinny.desktop /app/share/applications/org.hbarsaiyan.cinnytauri.desktop
       
     sources:
       - url: https://github.com/hbarsaiyan/cinny-tauri/archive/refs/tags/v1.1.2.tar.gz
