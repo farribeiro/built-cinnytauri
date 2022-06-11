@@ -41,8 +41,8 @@ modules:
         type: patch
       - path: 2.patch
         type: patch
-      - path: 3.patch
-        type: patch
+      # - path: 3.patch
+        # type: patch
 
 finish-args:
   # Required due to being a GUI application
