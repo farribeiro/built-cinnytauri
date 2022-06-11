@@ -43,6 +43,8 @@ modules:
         type: patch
       - path: 4.patch
         type: patch
+      - path: in.cinny.Cinny.appdata.xml
+        type: file
 
 finish-args:
   # Required due to being a GUI application
