@@ -1,0 +1,22 @@
+From cc75eef667c30690e1156d4c2131e208308acbd0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?F=C3=A1bio=20Rodrigues=20Ribeiro?= <farribeiro@gmail.com>
+Date: Sat, 11 Jun 2022 11:38:44 -0300
+Subject: [PATCH] Update tauri.conf.json
+
+---
+ src-tauri/tauri.conf.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 9b09e19..6a6a465 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -15,7 +15,7 @@
+     },
+     "bundle": {
+       "active": true,
+-      "targets": "all",
++      "targets": "deb",
+       "identifier": "cinny.tauri",
+       "icon": [
+         "icons/32x32.png",
