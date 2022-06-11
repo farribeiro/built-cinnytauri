@@ -2,7 +2,7 @@ id: org.hbarsaiyan.cinnytauri
 runtime: org.gnome.Platform
 runtime-version: '42'
 sdk: org.gnome.Sdk
-command: cinny.sh
+command: cinny
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-nightly
   - org.freedesktop.Sdk.Extension.node16
@@ -21,9 +21,18 @@ modules:
     build-commands:
       - npm install
       - npm run tauri build
-      - cp -r * /app
-      - mkdir -p /app/bin
-      - install -D cinny.sh /app/bin/cinny.sh
+      - cp -r src-tauri/target/release/bundle/deb/*.deb .
+      - ar x cinny_*.deb
+      - rm -f cinny_*.deb
+      - tar xf data.tar.gz
+      - rm -f control.tar.gz data.tar.xz debian-binary
+      - install -Dm644 resources/in.cinny.Cinny.appdata.xml /app/share/metainfo/in.cinny.Cinny.metainfo.xml
+      - cp -r usr/bin/cinny /app/bin
+      - mkdir -p /app/share/icons/hicolor
+      - cp -r usr/share/icons/hicolor/* /app/share/icons/hicolor
+      - rm -rf /app/share/icons/hicolor/512x512@2x
+      - install -Dm744 usr/share/applications/cinny.desktop /app/share/applications/in.cinny.Cinny.desktop
+      
     sources:
       - url: https://github.com/hbarsaiyan/cinny-tauri/archive/refs/tags/v1.1.2.tar.gz
         sha256: ed3686b238002ae8983078ce24af11fc8f62362edb5d9fa965c6fb610c4dff92
@@ -34,10 +43,6 @@ modules:
         type: patch
       - path: 3.patch
         type: patch
-      - type: script
-        dest-filename: cinny.sh
-        commands:
-          - echo "Hello world"
 
 finish-args:
   # Required due to being a GUI application
