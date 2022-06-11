@@ -1,0 +1,37 @@
+From dd88f57ec9955e1ca54dc39a465b0284d2bdf307 Mon Sep 17 00:00:00 2001
+From: Fabio Rodrigues Ribeiro <farribeiro@gmail.com>
+Date: Sat, 11 Jun 2022 13:13:48 -0300
+Subject: [PATCH] Remove system-tray
+
+---
+ src-tauri/Cargo.toml      | 2 +-
+ src-tauri/tauri.conf.json | 3 ---
+ 2 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+index 7468f93..e07088b 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -15,7 +15,7 @@ tauri-build = { version = "1.0.0-beta.3" }
+ [dependencies]
+ serde_json = "1.0"
+ serde = { version = "1.0", features = [ "derive" ] }
+-tauri = { version = "1.0.0-beta.8", features = ["system-tray"] }
++tauri = { version = "1.0.0-beta.8", features = [] }
+ 
+ [features]
+ default = [ "custom-protocol" ]
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 9b09e19..0edb863 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -10,9 +10,6 @@
+     "beforeBuildCommand": ""
+   },
+   "tauri": {
+-	"systemTray": {
+-      "iconPath": "icons/tray.png"
+-    },
+     "bundle": {
+       "active": true,
+       "targets": "all",
