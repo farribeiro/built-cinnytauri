@@ -40,7 +40,7 @@ modules:
         type: archive
       - path: 1.patch
         type: patch
-      - path: 2.patch
+      - path: 5.patch
         type: patch
       - path: 4.patch
         type: patch
