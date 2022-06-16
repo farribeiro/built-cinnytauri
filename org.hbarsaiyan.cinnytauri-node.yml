@@ -44,6 +44,8 @@ modules:
         type: patch
       - path: 4.patch
         type: patch
+      - file: 7.patch
+        type: patch
       - path: in.cinny.Cinny.appdata.xml
         type: file
 
