@@ -49,16 +49,6 @@ modules:
       - type: git
         url: https://github.com/freedesktop/libXdmcp.git
         
-  - name: xcbproto
-    sources:
-      - type: git
-        url: https://gitlab.freedesktop.org/xorg/proto/xcbproto.git
-        
-  - name: xcb
-    sources:
-      - type: git
-        url: https://gitlab.freedesktop.org/xorg/lib/libxcb.git
-
   - name: rustdesk
     buildsystem: simple
     build-commands:
