@@ -34,7 +34,10 @@ modules:
       - vcpkg/vcpkg install libvpx libyuv opus
       - mkdir -p target/debug
       - wget https://github.com/c-smile/sciter-sdk/raw/29a598b6d20220b93848b5e8abab704619296857/bin.lnx/x64/libsciter-gtk.so -P target/debug
-      - VCPKG_ROOT=${PWD}/vcpkg cargo build
+      - python3 inline-sciter.py 
+      - cargo build --features inline --release
+      - popd
+      # - VCPKG_ROOT=${PWD}/vcpkg cargo build
     sources:
       - type: git
         url: https://github.com/rustdesk/rustdesk.git
