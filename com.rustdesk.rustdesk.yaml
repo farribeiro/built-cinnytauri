@@ -1,0 +1,44 @@
+app-id: com.rustdesk.rustdesk
+runtime: org.gnome.Platform
+runtime-version: '42'
+sdk: org.gnome.Sdk
+command: rustdesk
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-nightly
+  - org.freedesktop.Sdk.Extension.llvm14
+
+finish-args:
+  - --device=dri
+  - --filesystem=host
+  - --share=ipc
+  - --share=network
+  - --socket=pulseaudio
+  - --socket=x11
+
+build-options:
+  append-path: /usr/lib/sdk/rust-nightly/bin:/usr/lib/sdk/llvm14/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm14/lib
+  build-args:
+    - --share=network
+  env: 
+    - CARGO_HOME: "/run/build/rust-flatpak/cargo"
+    # - VCPKG_ROOT: /run/build/
+
+modules:
+  - name: rustdesk
+    buildsystem: simple
+    build-commands:
+      - pip3 install pynput
+      - sh vcpkg/bootstrap-vcpkg.sh
+      - vcpkg/vcpkg install libvpx libyuv opus
+      - mkdir -p target/debug
+      - wget https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so -P target/debug
+      - VCPKG_ROOT=${PWD}/vcpkg cargo build
+    sources:
+      - type: git
+        url: https://github.com/rustdesk/rustdesk.git
+      - type: git
+        url: https://github.com/microsoft/vcpkg.git
+        # tag: 2021.12.01
+        dest: vcpkg
