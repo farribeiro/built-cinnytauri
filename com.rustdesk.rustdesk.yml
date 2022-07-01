@@ -34,7 +34,7 @@ modules:
       - type: git
         url: https://github.com/jordansissel/xdotool.git
 
-  -name: xcb-proto
+  - name: xcbproto
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/xorg/proto/xcbproto.git
