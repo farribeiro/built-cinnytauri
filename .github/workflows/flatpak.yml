@@ -16,6 +16,6 @@
           submodules: true
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
-          bundle: cinny.flatpak
-          manifest-path: org.hbarsaiyan.cinnytauri-node.yml
+          bundle: rustdesk.flatpak
+          manifest-path: com.rustdesk.rustdesk.yml
           cache-key: flatpak-builder-${{ github.sha }}
