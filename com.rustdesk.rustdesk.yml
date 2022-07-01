@@ -23,7 +23,10 @@ build-options:
     - --share=network
   env: 
     - CARGO_HOME: "/run/build/rust-flatpak/cargo"
-    # - VCPKG_ROOT: /run/build/
+    - CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER: "clang"
+    - CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS: "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
+    - CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: "clang"
+    - CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS: "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
 
 modules:
   - name: xdo
