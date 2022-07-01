@@ -26,7 +26,7 @@ build-options:
     # - VCPKG_ROOT: /run/build/
 
 modules:
-  - name: libxdo
+  - name: xdo
     buildsystem: simple
     build-commands:
       - make PREFIX=/app install
@@ -34,7 +34,12 @@ modules:
       - type: git
         url: https://github.com/jordansissel/xdotool.git
 
-  - name: libxcb
+  -name: xcb-proto
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/xorg/proto/xcbproto.git
+        
+  - name: xcb
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/xorg/lib/libxcb.git
