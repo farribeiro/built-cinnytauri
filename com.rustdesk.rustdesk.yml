@@ -5,7 +5,7 @@ sdk: org.freedesktop.Sdk
 command: rustdesk
 
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.rust-nightly
+  - org.freedesktop.Sdk.Extension.rust-stable
   - org.freedesktop.Sdk.Extension.llvm14
 
 finish-args:
@@ -17,7 +17,7 @@ finish-args:
   - --socket=x11
 
 build-options:
-  append-path: /usr/lib/sdk/rust-nightly/bin:/usr/lib/sdk/llvm14/bin
+  append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm14/bin
   prepend-ld-library-path: /usr/lib/sdk/llvm14/lib
   build-args:
     - --share=network
