@@ -38,6 +38,7 @@ modules:
       - cargo build --features inline --release
       - popd
       # - VCPKG_ROOT=${PWD}/vcpkg cargo build
+      - install -D -m 755 target/release/rustdesk /app/bin/rustdesk
     sources:
       - type: git
         url: https://github.com/rustdesk/rustdesk.git
