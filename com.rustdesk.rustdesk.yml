@@ -29,7 +29,7 @@ modules:
   - name: rustdesk
     buildsystem: simple
     build-commands:
-      - pip3 install --prefix=/app pynput
+      - pip3 install --prefix=/app --root=/app pynput
       - sh vcpkg/bootstrap-vcpkg.sh
       - vcpkg/vcpkg install libvpx libyuv opus
       - mkdir -p target/debug
