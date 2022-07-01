@@ -32,8 +32,8 @@ modules:
       - pip3 install --prefix=/app --root=/app pynput
       - sh vcpkg/bootstrap-vcpkg.sh
       - vcpkg/vcpkg install libvpx libyuv opus
-      - mkdir -p target/debug
-      - wget https://github.com/c-smile/sciter-sdk/raw/29a598b6d20220b93848b5e8abab704619296857/bin.lnx/x64/libsciter-gtk.so -P target/debug
+      - mkdir -p /app/lib/rustdesk/
+      - wget https://github.com/c-smile/sciter-sdk/raw/29a598b6d20220b93848b5e8abab704619296857/bin.lnx/x64/libsciter-gtk.so -P /app/lib/rustdesk
       - python3 inline-sciter.py 
       - cargo build --features inline --release
       - popd
