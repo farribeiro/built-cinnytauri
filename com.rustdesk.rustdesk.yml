@@ -69,9 +69,9 @@ modules:
   - name: rustdesk
     buildsystem: simple
     build-commands:
-      - sh vcpkg/bootstrap-vcpkg.sh
-      - vcpkg/vcpkg install libvpx libyuv opus
-      - mkdir -p /app/lib/rustdesk/
+      # - sh vcpkg/bootstrap-vcpkg.sh
+      # - vcpkg/vcpkg install libvpx libyuv opus
+      - mkdir -p /app/lib
       - wget https://github.com/c-smile/sciter-sdk/raw/29a598b6d20220b93848b5e8abab704619296857/bin.lnx/x64/libsciter-gtk.so 
       - mkdir -p /app/lib/rustdesk
       - mkdir -p target/debug
