@@ -26,6 +26,14 @@ build-options:
     # - VCPKG_ROOT: /run/build/
 
 modules:
+  - name: libxdo
+    buildsystem: simple
+    build-commands:
+      - make PREFIX=/app install
+    sources:
+      - type: git
+        url: https://github.com/jordansissel/xdotool.git
+
   - name: rustdesk
     buildsystem: simple
     build-commands:
