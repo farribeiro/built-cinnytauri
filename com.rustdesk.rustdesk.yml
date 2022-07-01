@@ -1,7 +1,7 @@
 app-id: com.rustdesk.rustdesk
-runtime: org.gnome.Platform
+runtime: org.freedesktop.Platform
 runtime-version: '42'
-sdk: org.gnome.Sdk
+sdk: org.freedesktop.Sdk
 command: rustdesk
 
 sdk-extensions:
