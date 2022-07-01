@@ -34,6 +34,11 @@ modules:
       - type: git
         url: https://github.com/jordansissel/xdotool.git
 
+  - name: libxcb
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/xorg/lib/libxcb.git
+
   - name: rustdesk
     buildsystem: simple
     build-commands:
