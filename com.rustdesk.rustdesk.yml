@@ -66,16 +66,25 @@ modules:
         url: https://files.pythonhosted.org/packages/d7/74/a231bca942b1cd9c4bb707788be325a61d26c7998bd25e88dc510d4b55c7/pynput-1.7.6.tar.gz
         sha256: 3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c
   
+  - name: cargo-source
+    buildsystem: simple
+    build-commands: 
+      - cargo --offline fetch --manifest-path Cargo.toml --verbose
+      - cargo --offline build --verbose --features inline,appimage --release
+      - install -D -m 755 target/release/rustdesk /app/bin/rustdesk
+    sources:
+      - type": dir
+        path: .
+      "cargo-sources.json"
+
   - name: rustdesk
     buildsystem: simple
     build-commands:
       # - sh vcpkg/bootstrap-vcpkg.sh
       # - vcpkg/vcpkg install libvpx libyuv opus
       - mkdir -p /app/lib
-      - cp -r libsciter-gtk.so /app/lib/rustdesk
+      - cp -r libsciter-gtk.so /app/lib
       - python3 inline-sciter.py 
-      - VCPKG_ROOT=${PWD}/vcpkg cargo build --features inline,appimage --release
-      - install -D -m 755 target/release/rustdesk /app/bin/rustdesk
     sources:
       - type: git
         url: https://github.com/rustdesk/rustdesk.git
