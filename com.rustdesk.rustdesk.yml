@@ -75,15 +75,10 @@ modules:
       - cp -r libsciter-gtk.so /app/lib/rustdesk
       - python3 inline-sciter.py 
       - VCPKG_ROOT=${PWD}/vcpkg cargo build --features inline,appimage --release
-      # - popd
       - install -D -m 755 target/release/rustdesk /app/bin/rustdesk
     sources:
       - type: git
         url: https://github.com/rustdesk/rustdesk.git
-      - type: git
-        url: https://github.com/microsoft/vcpkg.git
-        # tag: 2021.12.01
-        dest: vcpkg
       - type: file
         url: https://github.com/c-smile/sciter-sdk/raw/29a598b6d20220b93848b5e8abab704619296857/bin.lnx/x64/libsciter-gtk.so
         sha256: fcf388fc2f1ea41546f5a01104c8764f2467a3c55a3acbbc9b6e4f9807eedc72
