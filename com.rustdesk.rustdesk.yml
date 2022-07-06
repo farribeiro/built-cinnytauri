@@ -68,13 +68,15 @@ modules:
   
   - name: rustdesk
     buildsystem: simple
-    build-commands: 
-      - cargo --offline fetch --manifest-path Cargo.toml --verbose
-      - cargo --offline build --verbose --features inline,appimage --release
-      - install -D -m 755 target/release/rustdesk /app/bin/rustdesk
-      - mkdir -p /app/lib
+    build-commands:
+      - sh vcpkg/bootstrap-vcpkg.sh
+      - vcpkg/vcpkg install libvpx libyuv opus
+      # - cargo fetch --manifest-path Cargo.toml --verbose
       - cp -r libsciter-gtk.so /app/lib
-      - python3 inline-sciter.py 
+      - cp -r pynput_service.py /app/lib
+      - python3 inline-sciter.py
+      - VCPKG_ROOT=${PWD}/vcpkg cargo build --verbose --features inline,appimage --release
+      - install -D -m 755 target/release/rustdesk /app/bin/rustdesk
     sources:
       - type: git
         url: https://github.com/rustdesk/rustdesk.git
@@ -83,4 +85,8 @@ modules:
         sha256: fcf388fc2f1ea41546f5a01104c8764f2467a3c55a3acbbc9b6e4f9807eedc72
       - type: dir
         path: .
-      - cargo-sources.json
+      - type: git
+        url: https://github.com/microsoft/vcpkg.git
+        # tag: 2021.12.01
+        dest: vcpkg
+      # - cargo-sources.json
